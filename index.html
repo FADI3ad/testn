@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تجربة إشعار</title>
+</head>
+<body style="text-align: center; margin-top: 100px; font-family: sans-serif;">
+
+  <h1>تجربة إرسال إشعار من المتصفح 💬</h1>
+  <button onclick="sendReminderNotification()">أرسل التذكير الآن</button>
+
+  <script>
+    // طلب الإذن فور فتح الصفحة
+    if (Notification.permission !== 'granted') {
+      Notification.requestPermission();
+    }
+
+    // دالة إرسال الإشعار
+    function sendReminderNotification() {
+      if (Notification.permission === 'granted') {
+        new Notification("⏰ تذكير مهم", {
+          body: "متنساش تصلّي أو تراجع اعترافك 🙏",
+          icon: "https://cdn-icons-png.flaticon.com/512/3418/3418550.png" // صورة اختيارية
+        });
+      } else {
+        alert("رجاء السماح بالإشعارات أولاً 🙏");
+      }
+    }
+  </script>
+
+</body>
+</html>
